@@ -8,11 +8,10 @@ TOMORROW=$(date -v+1d +%m/%d/%Y)
 
 # 내일 아침/저녁/밤 예약
 sudo pmset schedule wakeorpoweron "$TOMORROW 23:59:00" # 다음날 깨어나서 Tomorrow를 재설정하기 위한 wakeup 예약
-# sudo pmset schedule wakeorpoweron "$TOMORROW 00:00:01" # tealeaf.light.plist에서 자정에 TR.sh 실행 명령
-
-# 1200초 후 자동 잠자기
-sleep 1200
-osascript -e 'tell application "System Events" to sleep'
 
 
-# 실행어 /Users/tealeaf/Local/Light/pmset.sh
+
+# 터미널에서 실행 = sudo bash /Users/tealeaf/Code_Local/GitHub/launchd/pmset.sh
+
+
+
