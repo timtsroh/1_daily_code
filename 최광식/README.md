@@ -13,7 +13,7 @@ Claude/LLM 없이 순수 Python으로 동작한다 (Claude 스킬의 1~5단계�
 
 | 파일 | 역할 |
 |------|------|
-| `main.py` | 엔트리포인트. `python3 main.py` 로 실행. |
+| `main.py` | 엔트리포인트. `python main.py` 로 실행. |
 | `config.py` | 세션 파일 경로, API ID/HASH, Drive 경로, 상수. |
 | `telegram_client.py` | Telethon으로 채널 크롤링, bit.ly URL 추출. |
 | `post_parser.py` | 해시태그/제목/분류(기업·산업) 파싱. |
@@ -25,8 +25,8 @@ Claude/LLM 없이 순수 Python으로 동작한다 (Claude 스킬의 1~5단계�
 ## 실행
 
 ```bash
-cd /Users/tealeaf/Code_Local/1_Daily_Code/최광식
-python3 main.py
+cd C:/Code_Local/1_Daily_Code/최광식
+python main.py
 ```
 
 인자 없음. 수집 기간은 `last_run.log` 기준 자동 산출.
@@ -44,11 +44,11 @@ python3 main.py
 `전종현` 스킬과 **동일한 세션 파일을 재사용**한다.
 
 ```
-/Users/tealeaf/.claude/tg_session.session
+C:/Users/DELL/.claude/tg_session.session
 ```
 
 인증이 만료되면 Telethon이 `RuntimeError` 를 던지므로, 복구는 전종현 스킬의
-`reauth.py`(`/Users/tealeaf/.claude/skills/전종현/scripts/reauth.py`)로 진행한다.
+`reauth.py`(`C:/Users/DELL/.claude/skills/전종현/scripts/reauth.py`)로 진행한다.
 
 API 키는 `config.py` 상단에 하드코딩되어 있으며 전종현 스크립트의 값과 같다.
 
@@ -57,7 +57,7 @@ API 키는 `config.py` 상단에 하드코딩되어 있으며 전종현 스크�
 ## Google Drive Inbox
 
 ```
-/Users/tealeaf/Library/CloudStorage/GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox
+C:/Users/DELL/Library/CloudStorage/GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox
 ```
 
 Drive가 로컬에 마운트되어 있지 않으면 `main.py` 는 즉시 종료한다.
@@ -69,7 +69,7 @@ Drive가 로컬에 마운트되어 있지 않으면 `main.py` 는 즉시 종료�
 스킬이 사용하는 로그 파일을 그대로 공유한다.
 
 ```
-/Users/tealeaf/.claude/skills/최광식/last_run.log
+C:/Users/DELL/.claude/skills/최광식/last_run.log
 ```
 
 형식:
@@ -137,7 +137,7 @@ LLM을 쓰지 않고 아래 휴리스틱으로 결정한다.
 
 ```
 [config] today(KST)=2026-04-21 start_date=2026-04-20
-[config] inbox=/Users/tealeaf/Library/CloudStorage/...
+[config] inbox=C:/Users/DELL/Library/CloudStorage/...
 [FETCH] https://bit.ly/DOS818  → category=산업분석 entity='조선' title='신조선가 3주 연속 상승...'
 [OK] 조선_260419_다올_신조선가 3주 연속 상승...p15.pdf  (pages=15 ctype=application/pdf)
 [SKIP dup] 대한조선_260111_다올_귀하다, 미들급 K-조선 챔피언*.pdf (이미 존재) msg=6234

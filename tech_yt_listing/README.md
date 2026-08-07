@@ -36,14 +36,14 @@ pip install -r requirements.txt
 
 ```bash
 # 1) 인자 없음 → 이번 주 월요일~오늘 (KST)
-python3 main.py
+python main.py
 
 # 2) YYMMDD 단일 → 해당 날짜 ~ 오늘
-python3 main.py 260406
+python main.py 260406
 
 # 3) 날짜 범위 (하이픈 또는 공백 구분)
-python3 main.py 260406-260411
-python3 main.py 260406 260411
+python main.py 260406-260411
+python main.py 260406 260411
 ```
 
 Exit code:
@@ -82,7 +82,7 @@ C열 값이 `https://www.youtube.com/` 으로 시작하는 행만 대상.
 
 ## 인증 경로
 
-- **GCP 서비스 계정 키**: `/Users/tealeaf/Code_Local/gcp-oauth.keys2.json`
+- **GCP 서비스 계정 키**: `C:/Code_Local/gcp-oauth.keys2.json`
   (CLAUDE.md의 전역 설정과 동일; `tech_yt_listing/config.py`의 `KEY_FILE` 상수에서 변경 가능)
 - 스코프: `https://www.googleapis.com/auth/spreadsheets`
 
@@ -148,7 +148,7 @@ RSS 피드(`https://www.youtube.com/feeds/videos.xml?channel_id=...`)에는 영�
 ### cron (매일 오전 7시 KST)
 
 ```cron
-0 7 * * * cd /Users/tealeaf/Code_Local/tech_yt_listing && /usr/local/bin/python3 main.py >> logs/run.log 2>&1
+0 7 * * * cd C:/Code_Local/tech_yt_listing && python main.py >> logs/run.log 2>&1
 ```
 
 ### launchd run.sh 예시
@@ -156,12 +156,12 @@ RSS 피드(`https://www.youtube.com/feeds/videos.xml?channel_id=...`)에는 영�
 ```bash
 #!/bin/bash
 set -euo pipefail
-cd /Users/tealeaf/Code_Local/tech_yt_listing
+cd C:/Code_Local/tech_yt_listing
 LOG_DIR="$(dirname "$0")/logs"
 mkdir -p "$LOG_DIR"
 TS="$(date '+%Y-%m-%d %H:%M:%S KST')"
 echo "[$TS] tech_yt_listing start"
-/usr/local/bin/python3 main.py
+python main.py
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] tech_yt_listing done"
 ```
 

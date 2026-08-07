@@ -6,6 +6,6 @@ mkdir -p "$LOG_DIR"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Starting 전종현 skill..."
 
-/usr/local/bin/python3 /Users/tealeaf/Code_Local/1_Daily_Code/전종현/main.py
+python C:/Code_Local/1_Daily_Code/전종현/main.py
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Done."

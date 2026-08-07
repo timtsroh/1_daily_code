@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """노정석 일일 파이프라인 엔트리포인트.
 
-실행:  python3 main.py
+실행:  python main.py
 
 흐름:
   1. KST 어제 날짜 계산
@@ -21,7 +21,7 @@ import traceback
 from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
-SESSION_FILE = '/Users/tealeaf/.claude/fb_session.json'
+SESSION_FILE = 'C:/Users/DELL/.claude/fb_session.json'
 
 
 def main() -> int:
@@ -29,8 +29,8 @@ def main() -> int:
         from fetch_feed import fetch_yesterday_posts
     except ImportError as e:
         print(f'[FATAL] Playwright 또는 의존성이 설치되지 않았습니다: {e}', file=sys.stderr)
-        print('설치:  python3 -m pip install -r requirements.txt', file=sys.stderr)
-        print('       python3 -m playwright install chromium', file=sys.stderr)
+        print('설치:  python -m pip install -r requirements.txt', file=sys.stderr)
+        print('       python -m playwright install chromium', file=sys.stderr)
         return 1
 
     from note_writer import write_posts, month_note_path
@@ -45,7 +45,7 @@ def main() -> int:
     if not os.path.exists(SESSION_FILE):
         print(f'[FATAL] Facebook 세션 파일이 없습니다: {SESSION_FILE}', file=sys.stderr)
         print(f'터미널에서 다음 명령을 실행해 로그인하세요:', file=sys.stderr)
-        print(f'  python3 {os.path.join(os.path.dirname(os.path.abspath(__file__)), "fb_login.py")}', file=sys.stderr)
+        print(f'  python {os.path.join(os.path.dirname(os.path.abspath(__file__)), "fb_login.py")}', file=sys.stderr)
         return 1
 
     try:

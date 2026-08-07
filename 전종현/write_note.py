@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 write_note.py
 수집된 텔레그램 피드를 Obsidian 월별 노트에 병합·저장한다.
@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from typing import Iterable, List, Tuple
 
 # ── Obsidian 경로 / 파일명 규칙 ────────────────────────────────────────────
-VAULT = "/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션"
+VAULT = "C:/Obsidian/Sync1/03 Sources/3 큐레이션"
 PERSON = "전종현"
 CHANNEL_URL = "https://t.me/chunjonghyun"
 # ───────────────────────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 post_parser.py
 텔레그램 포스트 텍스트에서 파일명 구성 요소를 추출.

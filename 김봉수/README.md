@@ -41,22 +41,22 @@
 ### 1. Python 의존성 설치
 
 ```bash
-cd /Users/tealeaf/Code_Local/1_Daily_Code/김봉수
-python3 -m pip install -r requirements.txt
+cd C:/Code_Local/1_Daily_Code/김봉수
+python -m pip install -r requirements.txt
 ```
 
 ### 2. Playwright 브라우저 설치
 
 ```bash
-python3 -m playwright install chromium
+python -m playwright install chromium
 ```
 
 ### 3. Facebook 세션 로그인
 
-세션 파일 경로는 기존 Claude 스킬과 동일하다: `/Users/tealeaf/.claude/fb_session.json`. 다른 프로젝트(노정석 등)와 세션을 공유한다.
+세션 파일 경로는 기존 Claude 스킬과 동일하다: `C:/Users/DELL/.claude/fb_session.json`. 다른 프로젝트(노정석 등)와 세션을 공유한다.
 
 ```bash
-python3 session.py
+python session.py
 ```
 
 헤드풀 브라우저가 뜨면 Facebook에 로그인한 뒤 터미널에서 Enter를 누른다. 세션이 저장된다.
@@ -68,18 +68,18 @@ python3 session.py
 ## 실행
 
 ```bash
-python3 main.py
+python main.py
 ```
 
 기본 동작:
 - 대상 날짜: 어제(KST, 실행 시점 기준)
-- 저장 위치: `/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션/김봉수_YYMM.md`
+- 저장 위치: `C:/Obsidian/Sync1/03 Sources/3 큐레이션/김봉수_YYMM.md`
 
 특정 날짜로 수동 실행:
 
 ```bash
-python3 main.py --date 2026-04-19
-python3 main.py --date 260419
+python main.py --date 2026-04-19
+python main.py --date 260419
 ```
 
 ---
@@ -88,8 +88,8 @@ python3 main.py --date 260419
 
 | 변수 | 기본값 | 설명 |
 |------|-------|-----|
-| `FB_SESSION_FILE` | `/Users/tealeaf/.claude/fb_session.json` | 세션 파일 경로 |
-| `OBSIDIAN_VAULT` | `/Users/tealeaf/Obsidian/Sync1` | Obsidian 볼트 루트 |
+| `FB_SESSION_FILE` | `C:/Users/DELL/.claude/fb_session.json` | 세션 파일 경로 |
+| `OBSIDIAN_VAULT` | `C:/Users/DELL/Obsidian/Sync1` | Obsidian 볼트 루트 |
 
 ---
 
@@ -127,9 +127,9 @@ tags:
 
 ## 자동화 (launchd)
 
-매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/김봉수/run.sh` → `python3 main.py`.
+매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/김봉수/run.sh` → `python main.py`.
 
-수동 실행: 이 폴더에서 `python3 main.py`.
+수동 실행: 이 폴더에서 `python main.py`.
 
 ---
 
@@ -137,4 +137,4 @@ tags:
 
 - `creation_time`이 없고 hover tooltip도 실패하면 시간은 `??:??`로 기록된다(원본 스킬과 동일).
 - 프로필이 스크롤 중 Facebook의 rate-limit에 걸릴 경우 수집 건수가 줄어들 수 있다. `MAX_SCROLLS`/`SCROLL_DELAY_MS`를 `config.py`에서 조정.
-- 세션 쿠키 만료 시 Playwright는 로그인 월(wall)로 리다이렉트되어 결과가 비어 있을 수 있다. 이 경우 `python3 session.py` 재실행.
+- 세션 쿠키 만료 시 Playwright는 로그인 월(wall)로 리다이렉트되어 결과가 비어 있을 수 있다. 이 경우 `python session.py` 재실행.

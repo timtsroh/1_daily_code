@@ -2,7 +2,12 @@
 
 # 매일 00:05 배치. 각 작업에 타임아웃 적용 (초 단위). 타임아웃·에러 시 해당 작업만 스킵하고 다음 진행.
 TIMEOUT=1800  # 30분
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
+
+# Windows Python 기본 stdout이 cp949(한국어 로케일)라 em-dash(—)·en-dash(–) 등
+# 다국어 문자를 print할 때 UnicodeEncodeError로 스크립트가 죽는 문제 방지.
+# 개별 스크립트에 sys.stdout.reconfigure 넣는 것보다 이 한 줄이 모든 하위 파이썬 프로세스에 상속돼서 훨씬 안전.
+export PYTHONIOENCODING=utf-8
 
 # Claude 사용 한도(usage limit)로 미실행된 작업명을 기록 → 05:10 morning 배치(plist_morning.sh)에서 재시도.
 PENDING="/tmp/claude_limit_pending.txt"
@@ -74,25 +79,34 @@ notify_summary() {
     done
     local msg="📋 plist_day.sh 작업 결과 (00:05)${lines}"
     echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] 작업 결과 디스코드 전송" >> "$LOG"
-    /usr/local/bin/python3 /Users/tealeaf/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
+    python C:/Users/DELL/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
 }
 
-run_with_timeout "log_start" /Users/tealeaf/Code_Local/1_Daily_Code/log/run.sh start
-run_with_timeout "전종현"     /Users/tealeaf/Code_Local/1_Daily_Code/전종현/run.sh
-run_with_timeout "김봉수"     /Users/tealeaf/Code_Local/1_Daily_Code/김봉수/run.sh
-run_with_timeout "노정석"     /Users/tealeaf/Code_Local/1_Daily_Code/노정석/run.sh
-run_with_timeout "nrd"       /Users/tealeaf/Code_Local/1_Daily_Skill/nrd/run.sh
-run_with_timeout "최광식"     /Users/tealeaf/Code_Local/1_Daily_Code/최광식/run.sh
-run_with_timeout "엄민용"     /Users/tealeaf/Code_Local/1_Daily_Code/엄민용/run.sh
-run_with_timeout "tech_yt_listing" /Users/tealeaf/Code_Local/1_Daily_Code/tech_yt_listing/run.sh
-run_with_timeout "tech_yt_script"  /Users/tealeaf/Code_Local/1_Daily_Skill/tech_yt_script/run.sh
-run_with_timeout "tech_blog"       /Users/tealeaf/Code_Local/1_Daily_Skill/tech_blog/run.sh
-run_with_timeout "ec_transcripts"  /Users/tealeaf/Code_Local/1_Daily_Code/ec_transcripts/plist_transcripts.sh
-run_with_timeout "todo"      /Users/tealeaf/Code_Local/1_Daily_Code/todo/run.sh
-run_with_timeout "dart_shiporder" /Users/tealeaf/Code_Local/1_Daily_Skill/dart_shiporder/run.sh
+run_with_timeout "log_start" C:/Code_Local/1_Daily_Code/log/run.sh start
+run_with_timeout "전종현"     C:/Code_Local/1_Daily_Code/전종현/run.sh
+run_with_timeout "김봉수"     C:/Code_Local/1_Daily_Code/김봉수/run.sh
+run_with_timeout "노정석"     C:/Code_Local/1_Daily_Code/노정석/run.sh
+run_with_timeout "nrd"       C:/Code_Local/1_Daily_Skill/nrd/run.sh
+run_with_timeout "최광식"     C:/Code_Local/1_Daily_Code/최광식/run.sh
+run_with_timeout "엄민용"     C:/Code_Local/1_Daily_Code/엄민용/run.sh
+run_with_timeout "tech_yt_listing" C:/Code_Local/1_Daily_Code/tech_yt_listing/run.sh
+run_with_timeout "youtube"         C:/Code_Local/1_Daily_Code/youtube/run.sh
+run_with_timeout "tech_yt_script"  C:/Code_Local/1_Daily_Skill/tech_yt_script/run.sh
+run_with_timeout "blog_listing"    C:/Code_Local/1_Daily_Code/blog_listing/run.sh
+run_with_timeout "tech_blog"       C:/Code_Local/1_Daily_Skill/tech_blog/run.sh
+run_with_timeout "article"         C:/Code_Local/1_Daily_Code/article/run.sh
+run_with_timeout "deals"           C:/Code_Local/1_Daily_Code/deals/run.sh
+run_with_timeout "llm"             C:/Code_Local/1_Daily_Code/llm/run.sh
+run_with_timeout "news"            C:/Code_Local/1_Daily_Code/news/run.sh
+run_with_timeout "report"          C:/Code_Local/1_Daily_Code/report/run.sh
+run_with_timeout "ec_transcripts"  C:/Code_Local/1_Daily_Code/ec_transcripts/plist_transcripts.sh
+run_with_timeout "todo"      C:/Code_Local/1_Daily_Code/todo/run.sh
+run_with_timeout "dart_shiporder" C:/Code_Local/1_Daily_Skill/dart_shiporder/run.sh
+run_with_timeout "macro"     C:/Code_Local/1_Daily_Code/macro/run.sh
+run_with_timeout "inbox_sort" C:/Code_Local/1_Daily_Code/inbox_sort/run.sh
 
 # 완료 알림 전에 전체 작업 결과를 디스코드에 전송한다.
 # (compile_day · wiki_update 는 05:10 plist_morning.sh 로 이동)
 notify_summary
 
-run_with_timeout "log_end"   /Users/tealeaf/Code_Local/1_Daily_Code/log/run.sh end
+run_with_timeout "log_end"   C:/Code_Local/1_Daily_Code/log/run.sh end

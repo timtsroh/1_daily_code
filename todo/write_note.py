@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 write_note.py
 fetch_feed.py가 만든 /tmp/todo_feed.json을 읽어 Obsidian 월별 노트로 저장한다.
@@ -24,7 +24,7 @@ import re
 import subprocess
 import sys
 
-INBOX = "/Users/tealeaf/Obsidian/Sync1/02 Daily/1 inbox"
+INBOX = "C:/Obsidian/Sync1/02 Daily/1 day"
 IN_JSON = "/tmp/todo_feed.json"
 EXTRACT_META = os.path.join(os.path.dirname(__file__), "extract_meta.py")
 
@@ -64,7 +64,7 @@ def fetch_meta(url: str) -> dict:
     """extract_meta.py 한 URL 호출."""
     try:
         out = subprocess.run(
-            ["python3", EXTRACT_META, url],
+            ["python", EXTRACT_META, url],
             capture_output=True, text=True, timeout=30,
         )
         line = out.stdout.strip().split("\n")[0]

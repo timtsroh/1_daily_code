@@ -8,11 +8,11 @@
 
 set -uo pipefail
 
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
-ERR="/Users/tealeaf/Code_Local/launchd_error.log"
+LOG="C:/Code_Local/launchd_output.log"
+ERR="C:/Code_Local/launchd_error.log"
 TMUX_BIN="/opt/homebrew/bin/tmux"
 TMUX_SOCKET="/tmp/tmux-501/default"
-DAY_SH="/Users/tealeaf/Code_Local/1_Daily_Code/plist_day.sh"
+DAY_SH="C:/Code_Local/1_Daily_Code/plist_day.sh"
 TARGET_SESSION="0"
 WINDOW_NAME="day_$(date +%s)"
 SENTINEL="/tmp/${WINDOW_NAME}.done"

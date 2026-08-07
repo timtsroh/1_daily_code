@@ -18,7 +18,7 @@ PROFILE_URL = f"https://www.facebook.com/{PROFILE_HANDLE}"
 # ---- 세션 ----------------------------------------------------------------
 # 기존 Claude 스킬과 동일한 경로를 그대로 사용한다. (이동 금지)
 SESSION_FILE = Path(
-    os.environ.get("FB_SESSION_FILE", "/Users/tealeaf/.claude/fb_session.json")
+    os.environ.get("FB_SESSION_FILE", "C:/Users/DELL/.claude/fb_session.json")
 )
 
 # ---- 타임존 ---------------------------------------------------------------
@@ -26,7 +26,7 @@ KST = timezone(timedelta(hours=9))
 
 # ---- Obsidian 저장 -------------------------------------------------------
 VAULT_ROOT = Path(
-    os.environ.get("OBSIDIAN_VAULT", "/Users/tealeaf/Obsidian/Sync1")
+    os.environ.get("OBSIDIAN_VAULT", "C:/Users/DELL/Obsidian/Sync1")
 )
 # CLAUDE.md 규칙: 피드 월별 노트는 3 큐레이션 아래에 저장한다.
 NOTE_DIR = VAULT_ROOT / "03 Sources" / "3 큐레이션"

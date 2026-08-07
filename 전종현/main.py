@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 main.py — 전종현 텔레그램 채널 자동 수집 엔트리포인트.
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 엄민용 — 신한투자증권 제약/바이오 텔레그램 채널(t.me/bio_shinhan) 리포트 자동 수집.
 
@@ -44,21 +44,18 @@ from telethon import TelegramClient
 API_ID = 32844347
 API_HASH = "432b3c2ca6b5e925320031c3e234ac58"
 # 다른 텔레그램 스킬(전종현 등)과 세션 파일을 공유한다.
-SESSION_FILE = "/Users/tealeaf/.claude/tg_session"
+SESSION_FILE = "C:/Users/DELL/.claude/tg_session"
 CHANNEL = "bio_shinhan"
 FETCH_LIMIT = 500  # 1개월 범위 스캔을 커버하는 여유값
 
 # 마지막 실행일 로그 — launchd run.sh 와 호환되도록 기존 스킬 경로를 유지한다.
-LAST_RUN_LOG = Path("/Users/tealeaf/.claude/skills/엄민용/last_run.log")
+LAST_RUN_LOG = Path("C:/Users/DELL/.claude/skills/엄민용/last_run.log")
 
 # PDF 저장 경로 (Google Drive Inbox)
-PDF_DIR = Path(
-    "/Users/tealeaf/Library/CloudStorage/"
-    "GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox"
-)
+PDF_DIR = Path("G:/내 드라이브/02 주식/02 자료/0 Inbox")
 
 # 피드 노트 (Obsidian 3 큐레이션/)
-NOTE_DIR = Path("/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션")
+NOTE_DIR = Path("C:/Obsidian/Sync1/03 Sources/3 큐레이션")
 
 BROKER_TAG = "신한"
 

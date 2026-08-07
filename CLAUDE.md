@@ -25,7 +25,7 @@
 ├── todo/                  # fetch_feed.py + write_note.py + extract_meta.py
 ├── tech_yt_listing/       # main.py (Google Sheets yt2 시트 갱신)
 ├── log/run.sh             # → ~/.claude/skills/log/scripts/log.py
-└── move/move.sh           # 02 Daily/1 inbox/ 2일 이상 경과 노트 → A2 Archive/1 moved/ (주간)
+└── move/move.sh           # 02 Daily/1 day/ 5일 이상 경과 노트 → 02 Daily/3 moved/ (주간)
 
 ~/Code_Local/1_Daily_Skill/   # Claude 스킬 wrapper (claude -p "/<skill>")
 ├── nrd/run.sh

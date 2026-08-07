@@ -2,7 +2,7 @@
 
 # 각 스킬에 타임아웃 적용 (초 단위). 타임아웃 시 해당 스킬만 스킵하고 다음 진행.
 TIMEOUT=900  # 15분
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
 
 # 실패한 작업을 누적해두고, log_end 직전에 디스코드로 알림.
 FAILED=()
@@ -51,19 +51,19 @@ notify_failures_if_any() {
         return 0
     fi
     echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] 실패 작업 디스코드 알림: ${failed_skills[*]}" >> "$LOG"
-    /usr/local/bin/python3 /Users/tealeaf/.claude/skills/log/scripts/log.py fail "${failed_skills[@]}" >> "$LOG" 2>&1 || true
+    python C:/Users/DELL/.claude/skills/log/scripts/log.py fail "${failed_skills[@]}" >> "$LOG" 2>&1 || true
 }
 
-run_with_timeout "log_start" /Users/tealeaf/Code_Local/GitHub/launchd/log/run.sh start
-run_with_timeout "전종현"     /Users/tealeaf/Code_Local/GitHub/launchd/전종현/run.sh
-run_with_timeout "김봉수"     /Users/tealeaf/Code_Local/GitHub/launchd/김봉수/run.sh
-run_with_timeout "nrd"       /Users/tealeaf/Code_Local/GitHub/launchd/nrd/run.sh
-run_with_timeout "최광식"     /Users/tealeaf/Code_Local/GitHub/launchd/최광식/run.sh
-run_with_timeout "엄민용"     /Users/tealeaf/Code_Local/GitHub/launchd/엄민용/run.sh
-run_with_timeout "노정석"     /Users/tealeaf/Code_Local/GitHub/launchd/노정석/run.sh
-run_with_timeout "daily"     /Users/tealeaf/Code_Local/GitHub/launchd/daily/run.sh
+run_with_timeout "log_start" C:/Code_Local/GitHub/launchd/log/run.sh start
+run_with_timeout "전종현"     C:/Code_Local/GitHub/launchd/전종현/run.sh
+run_with_timeout "김봉수"     C:/Code_Local/GitHub/launchd/김봉수/run.sh
+run_with_timeout "nrd"       C:/Code_Local/GitHub/launchd/nrd/run.sh
+run_with_timeout "최광식"     C:/Code_Local/GitHub/launchd/최광식/run.sh
+run_with_timeout "엄민용"     C:/Code_Local/GitHub/launchd/엄민용/run.sh
+run_with_timeout "노정석"     C:/Code_Local/GitHub/launchd/노정석/run.sh
+run_with_timeout "daily"     C:/Code_Local/GitHub/launchd/daily/run.sh
 
 # 완료 알림 전에 실패 작업을 먼저 디스코드에 알린다.
 notify_failures_if_any
 
-run_with_timeout "log_end"   /Users/tealeaf/Code_Local/GitHub/launchd/log/run.sh end
+run_with_timeout "log_end"   C:/Code_Local/GitHub/launchd/log/run.sh end

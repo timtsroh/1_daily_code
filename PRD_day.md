@@ -15,7 +15,7 @@
 | 시각 | 매일 05:00 KST |
 | LaunchAgent | `~/Library/LaunchAgents/com.tealeaf.day.plist` |
 | 진입 흐름 | launchd → `plist_day_tmux.sh` (tmux 경유, keychain 접근용) → `plist_day.sh` |
-| 위치 | `/Users/tealeaf/Code_Local/1_Daily_Code/plist_day.sh` |
+| 위치 | `C:/Code_Local/1_Daily_Code/plist_day.sh` |
 
 `plist_day_tmux.sh`가 별도 wrapper인 이유: launchd 자식 프로세스는 macOS Keychain 접근이 불가하므로, 이미 인증된 사용자 tmux 세션 `0`의 새 window로 send-keys 한다. plist_day.sh는 그 안에서 실행된다.
 
@@ -39,7 +39,7 @@
 | Tech/미디어 | 8 | tech_yt_listing | Code | `1_Daily_Code/tech_yt_listing/run.sh` | YouTube 채널 신규 영상 → Google Sheets `yt2` 시트 |
 | Tech/미디어 | 9 | tech_yt_script | Skill | `1_Daily_Skill/tech_yt_script/run.sh` → `/tech_yt_script` | yt2 미처리 영상 → `/yt` 스킬로 자막 추출 → Obsidian 노트 |
 | Tech/미디어 | 10 | tech_blog | Skill | `1_Daily_Skill/tech_blog/run.sh` → `/tech_blog` | VC/Tech 블로그 신규 글 → 한국어 3불릿 요약 + 전문 번역 |
-| 개인 관리 | 11 | todo | Code | `1_Daily_Code/todo/run.sh` | 텔레그램 @atomtodo → `/tmp/todo_feed.json` + `02 Daily/1 inbox/todo_YYYYMM.md` (월별 누적) |
+| 개인 관리 | 11 | todo | Code | `1_Daily_Code/todo/run.sh` | 텔레그램 @atomtodo → `/tmp/todo_feed.json` + `02 Daily/1 day/todo_YYYYMM.md` (월별 누적) |
 | 통합 및 갱신 | 12 | compile | Skill | `1_Daily_Skill/compile_day/compile_day.sh` → `/compile_day` | #1~11 결과를 `daily_YYMMDD.md`로 통합 임베드 |
 | 통합 및 갱신 | 13 | wiki_update | Skill | `1_Daily_Skill/wiki_update/run.sh` → `/wiki_update` | 신규 Raw Sources → `A1 Wiki/` 갱신 + #wiki Discord 알림 |
 | 시스템 | 14 | log_end | Code | `1_Daily_Code/log/run.sh end` | 작업 결과 요약 → #routine Discord + Google Sheets 종료 로그 |
@@ -67,7 +67,7 @@
 ```
 [1] log_start                    실행 시작 기록
      │
-[2-7] 피드/리포트 수집           → 02 Daily/1 inbox/, 03 Sources/3 큐레이션/, Drive 0 Inbox
+[2-7] 피드/리포트 수집           → 02 Daily/1 day/, 03 Sources/3 큐레이션/, Drive 0 Inbox
      ├─ 전종현 (텔레그램)
      ├─ 김봉수 (페이스북)
      ├─ 노정석 (페이스북)
@@ -80,9 +80,9 @@
      ├─ tech_yt_script  → 03 Sources/5 Youtube/
      └─ tech_blog       → 03 Sources/6 Tech Blog/
      │
-[11] todo (@atomtodo)            → 02 Daily/1 inbox/todo_YYYYMM.md (월별 누적, 일별 `# YYYY-MM-DD` 섹션)
+[11] todo (@atomtodo)            → 02 Daily/1 day/todo_YYYYMM.md (월별 누적, 일별 `# YYYY-MM-DD` 섹션)
      │
-[12] compile (compile_day)       → 02 Daily/1 inbox/daily_YYMMDD.md
+[12] compile (compile_day)       → 02 Daily/1 day/daily_YYMMDD.md
      │   #1~11 결과를 ![[note#heading]] 형태로 임베드 통합
      │
 [13] wiki_update                 → A1 Wiki/ 페이지 갱신 (entities/concepts)
@@ -148,10 +148,10 @@
 
 | 작업 | 백필 방법 |
 |------|----------|
-| 김봉수 | `python3 main.py --date YYYY-MM-DD` (네이티브 지원) |
+| 김봉수 | `python main.py --date YYYY-MM-DD` (네이티브 지원) |
 | todo | `bash run.sh YYMMDD` (네이티브 지원) |
 | 최광식, 엄민용 | `last_run.log`를 누락 시작일 -1로 설정 → `run.sh` 실행 → `last_run` 자동 오늘로 갱신 |
-| 전종현, 노정석 | main.py가 `datetime.now()` hardcoded. 단, `fetch_yesterday(target)` / `fetch_yesterday_posts(date)` 함수는 date 인자 받으므로 `python3 -c`로 직접 호출 |
+| 전종현, 노정석 | main.py가 `datetime.now()` hardcoded. 단, `fetch_yesterday(target)` / `fetch_yesterday_posts(date)` 함수는 date 인자 받으므로 `python -c`로 직접 호출 |
 | nrd, tech_yt_*, tech_blog | Claude 스킬, 수동 실행 시 `claude -p "/<skill>"` 호출 |
 
 ### 10.3 plist_day.sh 자체 실패

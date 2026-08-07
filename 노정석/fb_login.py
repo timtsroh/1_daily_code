@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Facebook 로그인 후 세션을 저장하는 스크립트.
 
-포팅 원본: /Users/tealeaf/.claude/skills/노정석/scripts/fb_login.py
+포팅 원본: C:/Users/DELL/.claude/skills/노정석/scripts/fb_login.py
 세션 파일 경로는 원본과 동일하게 유지한다.
 """
 
@@ -9,7 +9,7 @@ import asyncio
 
 from playwright.async_api import async_playwright
 
-SESSION_FILE = '/Users/tealeaf/.claude/fb_session.json'
+SESSION_FILE = 'C:/Users/DELL/.claude/fb_session.json'
 
 
 async def main():

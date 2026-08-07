@@ -15,4 +15,4 @@ sleep 1200
 osascript -e 'tell application "System Events" to sleep'
 
 
-# 실행어 /Users/tealeaf/Local/Light/pmset.sh
+# 실행어 C:/Users/DELL/Local/Light/pmset.sh

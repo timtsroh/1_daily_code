@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 김봉수 페이스북 피드 일일 수집 파이프라인.
 
-`python3 main.py` 한 번 실행 → 어제(KST) 포스트를 Playwright로 긁어
+`python main.py` 한 번 실행 → 어제(KST) 포스트를 Playwright로 긁어
 Obsidian 월별 노트에 저장한다.
 
 종료 코드:

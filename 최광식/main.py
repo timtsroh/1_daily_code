@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 main.py
 최광식 스킬 — 순수 Python 포팅판.

@@ -4,7 +4,7 @@ Facebook 프로필 `chester.roh`(노정석)의 **어제 날짜(KST)** 포스트�
 수집하여 Obsidian 월별 노트로 저장하는 순수 파이썬 파이프라인.
 
 원본은 Claude Code 스킬(`/노정석`)이었으며, Claude/LLM 의존성을 제거하고
-`python3 main.py` 한 방에 끝나도록 포팅한 버전이다.
+`python main.py` 한 방에 끝나도록 포팅한 버전이다.
 
 ---
 
@@ -27,21 +27,21 @@ Facebook 프로필 `chester.roh`(노정석)의 **어제 날짜(KST)** 포스트�
 ### 1) 의존성 설치 (최초 1회)
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 -m playwright install chromium
+python -m pip install -r requirements.txt
+python -m playwright install chromium
 ```
 
 ### 2) Facebook 로그인 세션 저장 (최초 1회, 세션 만료 시 재실행)
 
 ```bash
-python3 /Users/tealeaf/Code_Local/1_Daily_Code/노정석/fb_login.py
+python C:/Code_Local/1_Daily_Code/노정석/fb_login.py
 ```
 
 브라우저가 열리면 Facebook 로그인을 완료한 뒤 터미널에서 Enter.
 세션은 **원본 스킬과 동일 경로**에 저장된다:
 
 ```
-/Users/tealeaf/.claude/fb_session.json
+C:/Users/DELL/.claude/fb_session.json
 ```
 
 이 경로를 그대로 유지하므로, 기존 `/김봉수`, `/노정석` 등 다른 Claude 스킬과
@@ -50,13 +50,13 @@ python3 /Users/tealeaf/Code_Local/1_Daily_Code/노정석/fb_login.py
 ### 3) 일일 실행
 
 ```bash
-python3 /Users/tealeaf/Code_Local/1_Daily_Code/노정석/main.py
+python C:/Code_Local/1_Daily_Code/노정석/main.py
 ```
 
 cron/launchd에서 호출할 경우 작업 디렉토리를 프로젝트 폴더로 맞춰준다:
 
 ```bash
-cd /Users/tealeaf/Code_Local/1_Daily_Code/노정석 && python3 main.py
+cd C:/Code_Local/1_Daily_Code/노정석 && python main.py
 ```
 
 종료 코드:
@@ -67,7 +67,7 @@ cd /Users/tealeaf/Code_Local/1_Daily_Code/노정석 && python3 main.py
 
 ## 출력
 
-`/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션/노정석_YYMM.md`
+`C:/Obsidian/Sync1/03 Sources/3 큐레이션/노정석_YYMM.md`
 
 - 파일이 없으면 frontmatter + 제목 포함하여 신규 생성
 - 파일이 있으면 끝에 `---` 구분선과 함께 append
@@ -105,14 +105,14 @@ cd /Users/tealeaf/Code_Local/1_Daily_Code/노정석 && python3 main.py
 목적이 아니다. (스크롤 120~300회, 브라우저에 수분간 머무르며 실험적 네트워크
 인터셉트를 수행) 따라서 본 프로젝트에서는 포함하지 않았다.
 
-향후 대량 백필이 필요하면 원본 `/Users/tealeaf/.claude/skills/노정석/scripts/fetch_2026_v2.py`를
+향후 대량 백필이 필요하면 원본 `C:/Users/DELL/.claude/skills/노정석/scripts/fetch_2026_v2.py`를
 직접 실행하면 된다.
 
 ---
 
 ## 세션 핸들링
 
-- **세션 파일**: `/Users/tealeaf/.claude/fb_session.json` (원본 스킬과 동일 위치)
+- **세션 파일**: `C:/Users/DELL/.claude/fb_session.json` (원본 스킬과 동일 위치)
 - **만료 시 신호**: 스크랩 결과가 이상하게 0건이거나 Playwright가 로그인 페이지로
   리다이렉트되는 경우. 이때 `fb_login.py`를 다시 실행해 세션을 갱신한다.
 - `fb_login.py`는 **대화형**(headless=False)이므로 launchd/cron에서는 사용 불가.
@@ -138,6 +138,6 @@ cd /Users/tealeaf/Code_Local/1_Daily_Code/노정석 && python3 main.py
 
 ## launchd 연동
 
-매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/노정석/run.sh` → `python3 main.py`.
+매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/노정석/run.sh` → `python main.py`.
 
-수동 실행: 이 폴더에서 `python3 main.py`.
+수동 실행: 이 폴더에서 `python main.py`.

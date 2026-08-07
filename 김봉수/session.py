@@ -2,7 +2,7 @@
 
 - `ensure_session()`: 세션 파일이 없으면 안내 메시지와 함께 에러를 발생시킨다.
 - `refresh_session()`: 대화형으로 브라우저를 띄워 로그인한 뒤 세션을 저장한다.
-  CLI에서 `python3 session.py` 로 직접 호출할 수 있다.
+  CLI에서 `python session.py` 로 직접 호출할 수 있다.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ def ensure_session(path: Path = SESSION_FILE) -> Path:
         raise SessionMissingError(
             f"Facebook 세션 파일이 없습니다: {path}\n"
             f"다음 명령으로 로그인 후 세션을 저장하세요:\n"
-            f"  python3 {Path(__file__).resolve().parent / 'session.py'}"
+            f"  python {Path(__file__).resolve().parent / 'session.py'}"
         )
     return path
 

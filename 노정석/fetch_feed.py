@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 Facebook 피드 수집 모듈 (노정석 / chester.roh)
 
-포팅 원본: /Users/tealeaf/.claude/skills/노정석/scripts/fetch_feed.py
+포팅 원본: C:/Users/DELL/.claude/skills/노정석/scripts/fetch_feed.py
 
 어제 날짜(KST) 포스트를 Playwright로 수집하여 dict 리스트로 반환한다.
 각 post는 { 'post_date': date, 'time_str': 'HH:MM', 'text': str, 'url': str } 형식.
@@ -17,7 +17,7 @@ from typing import List, Optional, Tuple
 
 from playwright.async_api import async_playwright
 
-SESSION_FILE = '/Users/tealeaf/.claude/fb_session.json'
+SESSION_FILE = 'C:/Users/DELL/.claude/fb_session.json'
 PROFILE_URL = 'https://www.facebook.com/chester.roh'
 KST = timezone(timedelta(hours=9))
 
@@ -266,7 +266,7 @@ def fetch_yesterday_posts(yesterday_kst: date) -> List[dict]:
     if not os.path.exists(SESSION_FILE):
         raise FileNotFoundError(
             f'Facebook session not found: {SESSION_FILE}\n'
-            f'Run: python3 {os.path.join(os.path.dirname(__file__), "fb_login.py")}'
+            f'Run: python {os.path.join(os.path.dirname(__file__), "fb_login.py")}'
         )
 
     all_posts = asyncio.run(_get_posts(yesterday_kst))

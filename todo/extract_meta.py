@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 extract_meta.py
 블로그·뉴스 URL에서 제목·작성일(YYMMDD)·작성자/매체를 추출한다.
 
 사용법:
-    python3 extract_meta.py URL [URL ...]
+    python extract_meta.py URL [URL ...]
 
 출력 (한 줄 = 한 URL):
     URL\\tTITLE\\tDATE\\tSOURCE

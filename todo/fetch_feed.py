@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 fetch_feed.py
 @atomtodo 텔레그램 채널에서 지정 날짜(또는 날짜 범위) 메시지를 수집하고
 첨부 미디어를 다운로드한다.
 
 사용법:
-    python3 fetch_feed.py                    # 어제(KST) 단일 일자
-    python3 fetch_feed.py 260406             # 특정 YYMMDD
-    python3 fetch_feed.py 260401 260405      # 시작-종료 범위 (포함)
+    python fetch_feed.py                    # 어제(KST) 단일 일자
+    python fetch_feed.py 260406             # 특정 YYMMDD
+    python fetch_feed.py 260401 260405      # 시작-종료 범위 (포함)
 
 출력:
     /tmp/todo_feed.json — 일자별 메시지 목록 (텍스트, grouped_id, 다운로드된 미디어 경로 포함)
@@ -33,10 +33,10 @@ from telethon.tl.types import (
 # ── 설정 (references/channel_info.md 참조) ──────────────────────────────────
 API_ID = 32844347
 API_HASH = "432b3c2ca6b5e925320031c3e234ac58"
-SESSION_FILE = "/Users/tealeaf/.claude/tg_session"
+SESSION_FILE = "C:/Users/DELL/.claude/tg_session"
 CHANNEL = "atomtodo"
-INBOX = "/Users/tealeaf/Obsidian/Sync1/02 Daily/1 inbox"
-IMG_DIR = "/Users/tealeaf/Obsidian/Sync1/A3 Assets/1 IMG"
+INBOX = "C:/Obsidian/Sync1/02 Daily/1 day"
+IMG_DIR = "C:/Obsidian/Sync1/A3 Assets/1 IMG"
 OUT_JSON = "/tmp/todo_feed.json"
 FETCH_LIMIT = 1000
 # ────────────────────────────────────────────────────────────────────────────

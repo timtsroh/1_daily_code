@@ -39,12 +39,12 @@ Claude Code 스킬 `/엄민용` 을 순수 Python 으로 이식한 독립 실행
 
 | 항목 | 경로 |
 |------|------|
-| PDF 저장 | `/Users/tealeaf/Library/CloudStorage/GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox` |
-| 피드 노트 | `/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션/엄민용_YYMM.md` |
-| last_run 로그 | `/Users/tealeaf/.claude/skills/엄민용/last_run.log` |
-| Telegram 세션 | `/Users/tealeaf/.claude/tg_session.session` (다른 텔레그램 스킬과 공유) |
+| PDF 저장 | `C:/Users/DELL/Library/CloudStorage/GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox` |
+| 피드 노트 | `C:/Obsidian/Sync1/03 Sources/3 큐레이션/엄민용_YYMM.md` |
+| last_run 로그 | `C:/Users/DELL/.claude/skills/엄민용/last_run.log` |
+| Telegram 세션 | `C:/Users/DELL/.claude/tg_session.session` (다른 텔레그램 스킬과 공유) |
 
-> **세션 파일 공유**: `/Users/tealeaf/.claude/tg_session.session` 는 `전종현` 등
+> **세션 파일 공유**: `C:/Users/DELL/.claude/tg_session.session` 는 `전종현` 등
 > 다른 Telethon 기반 스킬이 함께 사용한다. 삭제·이동 금지. 만료 시 재인증은
 > 기존 스킬의 `reauth.py` 와 동일 절차로 진행하면 된다.
 
@@ -68,10 +68,10 @@ Claude Code 스킬 `/엄민용` 을 순수 Python 으로 이식한 독립 실행
 
 ```bash
 # 의존성 설치
-python3 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # 실행
-python3 main.py
+python main.py
 ```
 
 - 인자 없이 실행. 수집 범위는 `last_run.log` 에서 자동 결정.
@@ -84,7 +84,7 @@ python3 main.py
 last_run: 2026-04-22
 ```
 
-- 읽기: `/Users/tealeaf/.claude/skills/엄민용/last_run.log` 1줄 `last_run: YYYY-MM-DD` 포맷.
+- 읽기: `C:/Users/DELL/.claude/skills/엄민용/last_run.log` 1줄 `last_run: YYYY-MM-DD` 포맷.
 - 조회 시작일: 로그의 날짜 **−1일** (오류 재시도 누락 방지). 파일이 없으면 오늘 −30일.
 - 쓰기: 모든 포스트가 오류 없이 처리된 후에만 오늘(KST) 날짜로 덮어쓴다.
 

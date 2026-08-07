@@ -6,6 +6,6 @@ mkdir -p "$LOG_DIR"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Starting 엄민용 skill..."
 
-/Users/tealeaf/.local/bin/claude --dangerously-skip-permissions -p "/엄민용"
+claude --dangerously-skip-permissions -p "/엄민용"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Done."

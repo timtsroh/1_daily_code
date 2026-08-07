@@ -4,10 +4,10 @@ set -euo pipefail
 # 0 inbox/ 에서 7일 이상 지난 daily_*, news_*, todo_* 파일을 8 archive/ 로 이동
 # 매주 일요일 01:00 launchd로 실행
 
-VAULT="/Users/tealeaf/Obsidian/Sync1"
+VAULT="C:/Users/DELL/Obsidian/Sync1"
 INBOX="$VAULT/0 inbox"
 ARCHIVE="$VAULT/8 archive"
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
 
 # 파일명에서 날짜(YYMMDD)를 추출하여 7일 이상 경과 여부 판단
 # mtime 기반이 아닌 파일명 기반으로 판단 (iCloud 동기화 시 mtime이 변경될 수 있음)

@@ -2,7 +2,7 @@
 
 # 각 스킬에 타임아웃 적용 (초 단위). 타임아웃 시 해당 스킬만 스킵하고 다음 진행.
 TIMEOUT=1800  # 30분
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
 
 # 작업별 결과를 누적하고, log_end 직전에 전체 요약을 디스코드로 전송.
 TASK_NAMES=()
@@ -59,24 +59,24 @@ notify_summary() {
     done
     local msg="📋 plist_day.sh 작업 결과${lines}"
     echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] 작업 결과 디스코드 전송" >> "$LOG"
-    /usr/local/bin/python3 /Users/tealeaf/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
+    python C:/Users/DELL/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
 }
 
-run_with_timeout "log_start" /Users/tealeaf/Code_Local/1_Daily_Code/log/run.sh start
-run_with_timeout "전종현"     /Users/tealeaf/Code_Local/1_Daily_Code/전종현/run.sh
-run_with_timeout "김봉수"     /Users/tealeaf/Code_Local/1_Daily_Code/김봉수/run.sh
-run_with_timeout "노정석"     /Users/tealeaf/Code_Local/1_Daily_Code/노정석/run.sh
-run_with_timeout "nrd"       /Users/tealeaf/Code_Local/1_Daily_Skill/nrd/run.sh
-run_with_timeout "최광식"     /Users/tealeaf/Code_Local/1_Daily_Code/최광식/run.sh
-run_with_timeout "엄민용"     /Users/tealeaf/Code_Local/1_Daily_Code/엄민용/run.sh
-run_with_timeout "tech_yt_listing" /Users/tealeaf/Code_Local/1_Daily_Code/tech_yt_listing/run.sh
-run_with_timeout "tech_yt_script"  /Users/tealeaf/Code_Local/1_Daily_Skill/tech_yt_script/run.sh
-run_with_timeout "tech_blog"       /Users/tealeaf/Code_Local/1_Daily_Skill/tech_blog/run.sh
-run_with_timeout "todo"      /Users/tealeaf/Code_Local/1_Daily_Code/todo/run.sh
-run_with_timeout "compile"   /Users/tealeaf/Code_Local/1_Daily_Skill/compile_day/compile_day.sh
-run_with_timeout "wiki_update" /Users/tealeaf/Code_Local/1_Daily_Skill/wiki_update/run.sh
+run_with_timeout "log_start" C:/Code_Local/1_Daily_Code/log/run.sh start
+run_with_timeout "전종현"     C:/Code_Local/1_Daily_Code/전종현/run.sh
+run_with_timeout "김봉수"     C:/Code_Local/1_Daily_Code/김봉수/run.sh
+run_with_timeout "노정석"     C:/Code_Local/1_Daily_Code/노정석/run.sh
+run_with_timeout "nrd"       C:/Code_Local/1_Daily_Skill/nrd/run.sh
+run_with_timeout "최광식"     C:/Code_Local/1_Daily_Code/최광식/run.sh
+run_with_timeout "엄민용"     C:/Code_Local/1_Daily_Code/엄민용/run.sh
+run_with_timeout "tech_yt_listing" C:/Code_Local/1_Daily_Code/tech_yt_listing/run.sh
+run_with_timeout "tech_yt_script"  C:/Code_Local/1_Daily_Skill/tech_yt_script/run.sh
+run_with_timeout "tech_blog"       C:/Code_Local/1_Daily_Skill/tech_blog/run.sh
+run_with_timeout "todo"      C:/Code_Local/1_Daily_Code/todo/run.sh
+run_with_timeout "compile"   C:/Code_Local/1_Daily_Skill/compile_day/compile_day.sh
+run_with_timeout "wiki_update" C:/Code_Local/1_Daily_Skill/wiki_update/run.sh
 
 # 완료 알림 전에 전체 작업 결과를 디스코드에 전송한다.
 notify_summary
 
-run_with_timeout "log_end"   /Users/tealeaf/Code_Local/1_Daily_Code/log/run.sh end
+run_with_timeout "log_end"   C:/Code_Local/1_Daily_Code/log/run.sh end

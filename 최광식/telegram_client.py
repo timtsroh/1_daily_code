@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 telegram_client.py
 Telethon으로 t.me/HI_GS 채널에서 지정 기간 이후의 포스트를 수집한다.

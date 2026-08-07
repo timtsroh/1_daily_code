@@ -17,8 +17,8 @@ Python 스탠드얼론 프로젝트.
 ## 설치
 
 ```bash
-cd /Users/tealeaf/Code_Local/1_Daily_Code/전종현
-python3 -m venv .venv
+cd C:/Code_Local/1_Daily_Code/전종현
+python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ## 실행
 
 ```bash
-python3 main.py
+python main.py
 ```
 
 인자 없음. 어제 날짜(KST = UTC+9)는 자동 계산.
@@ -36,7 +36,7 @@ python3 main.py
 ```
 [INFO] 날짜(KST): 2026-04-19
 [INFO] 수집 메시지: 7건
-[UPDATED] /Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션/전종현_2604.md
+[UPDATED] C:/Obsidian/Sync1/03 Sources/3 큐레이션/전종현_2604.md
 [INFO] 추가: 7건, 중복 건너뜀: 0건
 [PREVIEW]
   08:12  …
@@ -52,8 +52,8 @@ python3 main.py
 |------|-----|
 | 수집 채널 | `chunjonghyun` (https://t.me/chunjonghyun) |
 | 수집 범위 | 어제 00:00~23:59 KST (최근 200건에서 필터) |
-| 세션 파일 | `/Users/tealeaf/.claude/tg_session.session` (변경 금지 — 기존 경로 유지) |
-| 노트 경로 | `/Users/tealeaf/Obsidian/Sync1/03 Sources/3 큐레이션/전종현_YYMM.md` |
+| 세션 파일 | `C:/Users/DELL/.claude/tg_session.session` (변경 금지 — 기존 경로 유지) |
+| 노트 경로 | `C:/Obsidian/Sync1/03 Sources/3 큐레이션/전종현_YYMM.md` |
 
 ## 인증
 
@@ -61,16 +61,16 @@ python3 main.py
 재인증:
 
 ```bash
-python3 reauth.py
+python reauth.py
 ```
 
 전화번호·Telegram 인증 코드·(설정된 경우) 2FA 비밀번호를 순차 입력.
 
 ## launchd
 
-매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/전종현/run.sh` → `python3 main.py`.
+매일 자동 실행: `~/Library/LaunchAgents/com.tealeaf.day.plist` → `plist_day_tmux.sh` → `plist_day.sh` → `1_Daily_Code/전종현/run.sh` → `python main.py`.
 
-수동 실행: 이 폴더에서 `python3 main.py`.
+수동 실행: 이 폴더에서 `python main.py`.
 
 ## 동작 세부
 

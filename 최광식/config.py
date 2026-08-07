@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 config.py
 최광식 스킬 포팅 — 공용 상수.
@@ -12,16 +12,13 @@ from pathlib import Path
 # ── Telegram ───────────────────────────────────────────────────────────────
 API_ID = 32844347
 API_HASH = "432b3c2ca6b5e925320031c3e234ac58"
-SESSION_FILE = "/Users/tealeaf/.claude/tg_session"  # 전종현과 공유
+SESSION_FILE = "C:/Users/DELL/.claude/tg_session"  # 전종현과 공유
 CHANNEL = "HI_GS"  # https://t.me/HI_GS
 
 # ── 경로 ────────────────────────────────────────────────────────────────────
-LAST_RUN_LOG = Path("/Users/tealeaf/.claude/skills/최광식/last_run.log")
+LAST_RUN_LOG = Path("C:/Users/DELL/.claude/skills/최광식/last_run.log")
 
-GDRIVE_INBOX = Path(
-    "/Users/tealeaf/Library/CloudStorage/"
-    "GoogleDrive-taeseungg@gmail.com/My Drive/02 주식/02 자료/0 Inbox"
-)
+GDRIVE_INBOX = Path("G:/내 드라이브/02 주식/02 자료/0 Inbox")
 
 # ── 동작 파라미터 ───────────────────────────────────────────────────────────
 # 최초 실행 시 조회 범위 (일)

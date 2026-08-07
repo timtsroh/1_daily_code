@@ -11,12 +11,12 @@ set -euo pipefail
 #
 # plist_day.sh의 todo 작업으로 매일 자동 실행됨 (compile_day보다 먼저)
 
-SCRIPTS="/Users/tealeaf/Code_Local/1_Daily_Code/todo"
+SCRIPTS="C:/Code_Local/1_Daily_Code/todo"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Starting todo fetch..."
-/usr/local/bin/python3 "$SCRIPTS/fetch_feed.py" "$@"
+python "$SCRIPTS/fetch_feed.py" "$@"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] Starting todo write..."
-/usr/local/bin/python3 "$SCRIPTS/write_note.py"
+python "$SCRIPTS/write_note.py"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] todo done."

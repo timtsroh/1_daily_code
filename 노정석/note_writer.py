@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Obsidian 월별 노트 쓰기/append 로직.
 
-파일 경로: {VAULT}/3 큐레이션/노정석_YYMM.md
+파일 경로: {VAULT}/03 Sources/3 큐레이션/노정석_YYMM.md
 파일 없으면 frontmatter + 제목 포함하여 신규 생성.
 파일 있으면 끝에 `---` 구분선과 함께 append.
 
@@ -16,8 +16,10 @@ from datetime import date
 from typing import List
 
 
-VAULT_ROOT = '/Users/tealeaf/Obsidian/Sync1'
-INBOX_DIR = os.path.join(VAULT_ROOT, '3 큐레이션')
+VAULT_ROOT = 'C:/Users/DELL/Obsidian/Sync1'
+# 다른 피드 스킬(김봉수·전종현 등)과 동일하게 03 Sources/3 큐레이션 에 저장 (이전엔 최상위
+# '3 큐레이션'에 잘못 저장돼 폴더가 중복됐었음)
+INBOX_DIR = os.path.join(VAULT_ROOT, '03 Sources', '3 큐레이션')
 
 
 def month_note_path(yesterday: date) -> str:

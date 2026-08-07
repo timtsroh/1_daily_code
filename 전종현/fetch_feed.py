@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 fetch_feed.py
 텔레그램 채널 chunjonghyun에서 어제(KST) 날짜 메시지를 수집한다.
@@ -37,7 +37,7 @@ from telethon.tl.types import (
 # ── 설정 ───────────────────────────────────────────────────────────────────
 API_ID = 32844347
 API_HASH = "432b3c2ca6b5e925320031c3e234ac58"
-SESSION_FILE = "/Users/tealeaf/.claude/tg_session"
+SESSION_FILE = "C:/Users/DELL/.claude/tg_session"
 CHANNEL = "chunjonghyun"
 FETCH_LIMIT = 200
 # ───────────────────────────────────────────────────────────────────────────

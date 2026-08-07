@@ -15,7 +15,7 @@ YT2_TAB = "yt2"
 
 # ── 인증 ──────────────────────────────────────────────
 # CLAUDE.md에 명시된 GCP 서비스 계정 키 경로
-KEY_FILE = "/Users/tealeaf/Code_Local/gcp-oauth.keys2.json"
+KEY_FILE = "C:/Code_Local/gcp-oauth.keys2.json"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 # ── 필터 ──────────────────────────────────────────────

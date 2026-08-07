@@ -6,7 +6,7 @@
 
 ## 1. 목적
 
-매일 쌓이는 데일리 노트(`daily_*.md`) · 뉴스 노트(`news_*.md`) · todo 노트(`todo_*.md`)가 `02 Daily/1 inbox/`에 누적되지 않도록 한 주에 한 번 오래된 파일을 `A2 Archive/1 moved/`로 정리하고, 같은 시점에 그 한 주(토~금) 동안 새로 들어온 포스팅·작업을 한 노트(`weekly_YYMMDD.md`)에 임베드 형식으로 모아 둔다.
+매일 쌓이는 데일리 노트(`daily_*.md`) · 뉴스 노트(`news_*.md`) · todo 노트(`todo_*.md`)가 `02 Daily/1 day/`에 누적되지 않도록 한 주에 한 번 오래된 파일을 `02 Daily/3 moved/`로 정리하고, 같은 시점에 그 한 주(토~금) 동안 새로 들어온 포스팅·작업을 한 노트(`weekly_YYMMDD.md`)에 임베드 형식으로 모아 둔다.
 
 `plist_day.sh`(매일)가 "어제"를 정리한다면, `plist_week.sh`(매주 토)는 "지난 주 전체"를 회고·아카이브한다.
 
@@ -17,7 +17,7 @@
 | 시각 | 매주 토요일 05:00 KST (`Weekday=6`) |
 | LaunchAgent | `~/Library/LaunchAgents/com.tealeaf.saturday.plist` |
 | 진입 흐름 | launchd → `plist_week.sh` 직접 실행 |
-| 위치 | `/Users/tealeaf/Code_Local/1_Daily_Code/plist_week.sh` |
+| 위치 | `C:/Code_Local/1_Daily_Code/plist_week.sh` |
 
 `plist_day.sh`와 달리 tmux wrapper가 없다 — keychain 접근이 필요한 외부 인증(Telegram, Facebook 등)을 호출하지 않으므로 launchd 자식 프로세스에서 직접 실행해도 무방하다.
 
@@ -31,7 +31,7 @@
 
 | 분류 | # | 작업 | 유형 | 실행방법 | 내용 |
 |------|---|------|------|---------|------|
-| 정리 | 1 | move | Code | `1_Daily_Code/move/move.sh` | `02 Daily/1 inbox/`의 2일 이상 지난 `daily_*.md`/`news_*.md`/`todo_*.md` → `A2 Archive/1 moved/` 이동 |
+| 정리 | 1 | move | Code | `1_Daily_Code/move/move.sh` | `02 Daily/1 day/`의 5일 이상 지난 `daily_*.md`/`news_*.md`/`todo_*.md` → `02 Daily/3 moved/` 이동 |
 | 통합 및 갱신 | 2 | compile_week | Skill | `claude --dangerously-skip-permissions -p "/compile_week"` | 이번 주(토~금) 신규 포스팅·작업 → `02 Daily/2 weekly/weekly_YYMMDD.md` 위클리 노트 생성 |
 
 ## 4. 동작 원리
@@ -52,7 +52,7 @@
 
 ### 5.1 move (`move/move.sh`)
 
-`02 Daily/1 inbox/` 안의 일자가 박힌 파일 중 **파일명 YYMMDD 기준 2일 이상 지난** 것을 `A2 Archive/1 moved/`로 이동한다.
+`02 Daily/1 day/` 안의 일자가 박힌 파일 중 **파일명 YYMMDD 기준 5일 이상 지난** 것을 `02 Daily/3 moved/`로 이동한다.
 
 | 항목 | 값 |
 |------|-----|
@@ -60,7 +60,7 @@
 | 일자 추출 | `basename`에서 첫 6자리 숫자 (`grep -oE '[0-9]{6}' | head -1`) |
 | 컷오프 | `date -v-2d +%y%m%d` (오늘 -2일, YYMMDD) |
 | 비교 | `file_date -lt cutoff` (문자열 정수 비교) |
-| 이동 대상 | `$VAULT/A2 Archive/1 moved/` |
+| 이동 대상 | `$VAULT/02 Daily/3 moved/` |
 
 **판정 기준이 mtime이 아니라 파일명인 이유**: iCloud 동기화로 mtime이 자주 갱신되어 부정확. 파일명에 박힌 일자(`YYMMDD`)는 노트 생성 시점에 결정되어 변하지 않는다.
 
@@ -79,7 +79,7 @@
 |------|-----|
 | 인자 | 없음 → 이번 주 금요일 / `YYMMDD` → 그 금요일이 속한 주 |
 | 주 범위 | 토요일 = 금요일 - 6일 |
-| 출력 경로 | `/Users/tealeaf/Obsidian/Sync1/02 Daily/2 weekly/weekly_YYMMDD.md` (금요일 일자) |
+| 출력 경로 | `C:/Obsidian/Sync1/02 Daily/2 weekly/weekly_YYMMDD.md` (금요일 일자) |
 
 **섹션 구조** (compile_week 스킬 내 `templates/weekly_note.md` 고정):
 
@@ -99,7 +99,7 @@
 ## 6. 의존성 흐름
 
 ```
-[1] move                         02 Daily/1 inbox/ → A2 Archive/1 moved/
+[1] move                         02 Daily/1 day/ → 02 Daily/3 moved/
      │                           (compile_week가 archive된 파일을 참조하지 않으므로 순서는 무관, 다만 inbox 정리 후 실행하면 깔끔)
      │
 [2] compile_week                 02 Daily/2 weekly/weekly_YYMMDD.md

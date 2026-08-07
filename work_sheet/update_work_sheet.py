@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!python
 """반복 자동화 작업 목록을 Google Sheet "work" 시트에 기록.
 
 소스: ~/.claude/CLAUDE.md / ~/.claude/routine.md / launchd plist / plist_day.sh / crontab
@@ -8,8 +8,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 SHEET_ID = "1l3rbFwu05_Ti6H62_Eo4wnuxkum14VUwKK3xBHP0IN0"
-KEYFILE = "/Users/tealeaf/Code_Local/gcp-oauth.keys2.json"
-TAB = "work"
+KEYFILE = "C:/Code_Local/gcp-oauth.keys2.json"
+TAB = "Work"
 
 HEADER = ["작업명", "작업내용", "관련 코드 / 스킬", "작업시간(KST)", "빈도", "트리거"]
 
@@ -34,7 +34,11 @@ ROWS = [
     ["tech_yt_script", "yt2 시트 미처리 영상 → /yt 적용해 Obsidian 노트 생성, H열 'v' 표기",
      "1_Daily_Skill/tech_yt_script/run.sh → claude -p \"/tech_yt_script\"", "매일 00:05 (순차)", "매일", "launchd: com.tealeaf.day.plist"],
     ["tech_blog", "blog 시트 소스에서 어제 신규 글 → 한국어 3불릿 요약 + 전문 번역 노트",
-     "1_Daily_Skill/tech_blog/run.sh → claude -p \"/tech_blog\"", "매일 00:05 (순차)", "매일", "launchd: com.tealeaf.day.plist"],
+     "1_Daily_Skill/tech_blog/run.sh → claude -p \"/tech_blog\"", "매일 00:05 (순차)", "매일", "Task Scheduler: Bill_plist_day"],
+    ["news", "CNBC·FT·NYT·WSJ Tech 섹션 RSS + Google News fallback 수집 → adb1/news/data/news.json 재빌드 → commit·push (Vercel 재배포, adb1.vercel.app/#news 갱신)",
+     "1_Daily_Code/news/run.sh → python -m news.collectors.build", "매일 00:05 (순차)", "매일", "Task Scheduler: Bill_plist_day"],
+    ["report", "네이버 금융 nrd 시트(섹터·기업) 각 최근 5건 리포트 수집 → adb1/report/data/reports.json 재빌드 → commit·push (Vercel 재배포, adb1.vercel.app/#report 갱신)",
+     "1_Daily_Code/report/run.sh → 2_Dash python -m report.collectors.build", "매일 00:05 (순차)", "매일", "Task Scheduler: Bill_plist_day"],
     ["ec_transcripts", "실적발표 트랜스크립트 URL 수집 → earnings.json/EC시트 갱신 → adb1 repo push(Vercel 재배포) → 신규분 /ec 노트 생성 (구 17:00 → 00:05 통합)",
      "1_Daily_Code/ec_transcripts/plist_transcripts.sh → collectors.transcripts + claude -p \"/ec\"", "매일 00:05 (순차)", "매일", "launchd: com.tealeaf.day.plist"],
     ["todo", "텔레그램 @atomtodo 어제 메시지 → Obsidian 0 inbox/todo_YYYYMM.md 월별 누적",
@@ -59,8 +63,8 @@ ROWS = [
      "plist_week.sh → claude -p \"/compile_week\"", "매주 토 05:00 (2번째)", "매주 토", "launchd: com.tealeaf.saturday.plist"],
 
     # --- crontab (현재 비활성: 대상 스크립트 경로 부재) ---
-    ["Run_Log (비활성)", "crontab 등록되어 있으나 /Users/tealeaf/Run/Run_Log.py 가 존재하지 않아 실제 동작 안 함",
-     "crontab: /usr/local/bin/python3 /Users/tealeaf/Run/Run_Log.py", "매주 토 18:17", "매주 토 (비활성)", "crontab"],
+    ["Run_Log (비활성)", "crontab 등록되어 있으나 C:/Users/DELL/Run/Run_Log.py 가 존재하지 않아 실제 동작 안 함",
+     "crontab: python C:/Users/DELL/Run/Run_Log.py", "매주 토 18:17", "매주 토 (비활성)", "crontab"],
 ]
 
 

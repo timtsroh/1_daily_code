@@ -1,11 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """tech_yt_listing — 엔트리 포인트.
 
 사용법:
-    python3 main.py                # 이번 주(월~오늘, KST) 수집
-    python3 main.py 260406         # 해당 날짜 ~ 오늘
-    python3 main.py 260406-260411  # 범위
-    python3 main.py 260406 260411  # 범위 (공백 구분)
+    python main.py                # 이번 주(월~오늘, KST) 수집
+    python main.py 260406         # 해당 날짜 ~ 오늘
+    python main.py 260406-260411  # 범위
+    python main.py 260406 260411  # 범위 (공백 구분)
 
 Exit code:
     0 → 정상 종료 (개별 채널 에러가 있어도 전체 파이프라인이 진행되었으면 0)

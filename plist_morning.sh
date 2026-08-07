@@ -7,8 +7,11 @@
 # plist_day.sh와 동일한 run_with_timeout 패턴. 단, 여기서는 한도 재시도 큐를 다시 쌓지 않는다.
 
 TIMEOUT=1800  # 30분
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
 PENDING="/tmp/claude_limit_pending.txt"
+
+# Windows cp949 UnicodeEncodeError 방지 (plist_day.sh와 동일 이유)
+export PYTHONIOENCODING=utf-8
 
 TASK_NAMES=()
 TASK_RESULTS=()
@@ -56,11 +59,11 @@ run_with_timeout() {
 # PENDING에 기록된 작업명 → 실제 실행 스크립트 매핑 (Claude를 쓰는 작업만 대상)
 resolve_script() {
     case "$1" in
-        nrd)            echo "/Users/tealeaf/Code_Local/1_Daily_Skill/nrd/run.sh" ;;
-        tech_yt_script) echo "/Users/tealeaf/Code_Local/1_Daily_Skill/tech_yt_script/run.sh" ;;
-        tech_blog)      echo "/Users/tealeaf/Code_Local/1_Daily_Skill/tech_blog/run.sh" ;;
-        dart_shiporder) echo "/Users/tealeaf/Code_Local/1_Daily_Skill/dart_shiporder/run.sh" ;;
-        ec_transcripts) echo "/Users/tealeaf/Code_Local/1_Daily_Code/ec_transcripts/plist_transcripts.sh" ;;
+        nrd)            echo "C:/Code_Local/1_Daily_Skill/nrd/run.sh" ;;
+        tech_yt_script) echo "C:/Code_Local/1_Daily_Skill/tech_yt_script/run.sh" ;;
+        tech_blog)      echo "C:/Code_Local/1_Daily_Skill/tech_blog/run.sh" ;;
+        dart_shiporder) echo "C:/Code_Local/1_Daily_Skill/dart_shiporder/run.sh" ;;
+        ec_transcripts) echo "C:/Code_Local/1_Daily_Code/ec_transcripts/plist_transcripts.sh" ;;
         *) echo "" ;;
     esac
 }
@@ -82,7 +85,7 @@ notify_summary() {
     [ -z "$lines" ] && lines="${nl}- (catch-up 대상 없음, compile/wiki만 수행)"
     local msg="🌅 plist_morning.sh 작업 결과 (05:10)${lines}"
     echo "[$(date '+%Y-%m-%d %H:%M:%S KST')] morning 작업 결과 디스코드 전송" >> "$LOG"
-    /usr/local/bin/python3 /Users/tealeaf/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
+    python C:/Users/DELL/.claude/skills/log/scripts/log.py discord "$msg" >> "$LOG" 2>&1 || true
 }
 
 # 1) 00:05 배치에서 Claude 한도로 미실행된 작업 재시도
@@ -102,10 +105,10 @@ else
 fi
 
 # 2) compile_day — 데일리 노트 통합 (catch-up으로 수집분 반영 후)
-run_with_timeout "compile" /Users/tealeaf/Code_Local/1_Daily_Skill/compile_day/compile_day.sh
+run_with_timeout "compile" C:/Code_Local/1_Daily_Skill/compile_day/compile_day.sh
 
 # 3) wiki_update — Wiki 갱신
-run_with_timeout "wiki_update" /Users/tealeaf/Code_Local/1_Daily_Skill/wiki_update/run.sh
+run_with_timeout "wiki_update" C:/Code_Local/1_Daily_Skill/wiki_update/run.sh
 
 notify_summary
 

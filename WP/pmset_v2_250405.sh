@@ -11,7 +11,7 @@ sudo pmset schedule wakeorpoweron "$TOMORROW 23:59:00" # 다음날 깨어나서 
 
 
 
-# 터미널에서 실행 = sudo bash /Users/tealeaf/Code_Local/GitHub/launchd/pmset.sh
+# 터미널에서 실행 = sudo bash C:/Code_Local/GitHub/launchd/pmset.sh
 
 
 

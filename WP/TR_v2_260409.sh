@@ -2,7 +2,7 @@
 
 # 각 스킬에 타임아웃 적용 (초 단위). 타임아웃 시 해당 스킬만 스킵하고 다음 진행.
 TIMEOUT=900  # 15분
-LOG="/Users/tealeaf/Code_Local/launchd_output.log"
+LOG="C:/Code_Local/launchd_output.log"
 
 run_with_timeout() {
     local name="$1"
@@ -31,12 +31,12 @@ run_with_timeout() {
     return 0  # 에러여도 다음 스킬 진행
 }
 
-run_with_timeout "log"    /Users/tealeaf/Code_Local/GitHub/launchd/log/run.sh
-run_with_timeout "전종현"  /Users/tealeaf/Code_Local/GitHub/launchd/전종현/run.sh
-run_with_timeout "김봉수"  /Users/tealeaf/Code_Local/GitHub/launchd/김봉수/run.sh
-run_with_timeout "nrd"    /Users/tealeaf/Code_Local/GitHub/launchd/nrd/run.sh
-run_with_timeout "최광식"  /Users/tealeaf/Code_Local/GitHub/launchd/최광식/run.sh
-run_with_timeout "엄민용"  /Users/tealeaf/Code_Local/GitHub/launchd/엄민용/run.sh
-run_with_timeout "노정석"  /Users/tealeaf/Code_Local/GitHub/launchd/노정석/run.sh
-run_with_timeout "daily"  /Users/tealeaf/Code_Local/GitHub/launchd/daily/run.sh
-run_with_timeout "log"    /Users/tealeaf/Code_Local/GitHub/launchd/log/run.sh
+run_with_timeout "log"    C:/Code_Local/GitHub/launchd/log/run.sh
+run_with_timeout "전종현"  C:/Code_Local/GitHub/launchd/전종현/run.sh
+run_with_timeout "김봉수"  C:/Code_Local/GitHub/launchd/김봉수/run.sh
+run_with_timeout "nrd"    C:/Code_Local/GitHub/launchd/nrd/run.sh
+run_with_timeout "최광식"  C:/Code_Local/GitHub/launchd/최광식/run.sh
+run_with_timeout "엄민용"  C:/Code_Local/GitHub/launchd/엄민용/run.sh
+run_with_timeout "노정석"  C:/Code_Local/GitHub/launchd/노정석/run.sh
+run_with_timeout "daily"  C:/Code_Local/GitHub/launchd/daily/run.sh
+run_with_timeout "log"    C:/Code_Local/GitHub/launchd/log/run.sh

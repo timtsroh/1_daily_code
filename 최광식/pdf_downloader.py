@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 pdf_downloader.py
 bit.ly 링크를 따라가 PDF를 다운로드하고, 페이지 수를 추출한다.
